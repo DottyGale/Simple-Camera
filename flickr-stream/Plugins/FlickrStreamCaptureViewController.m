@@ -7,37 +7,54 @@
 //
 
 #import "FlickrStreamCaptureViewController.h"
+#import "FlickrStreamCaptureProcessor.h"
+
+#import <AVFoundation/AVFoundation.h>
 
 @interface FlickrStreamCaptureViewController ()
+
+- (void) showOverlay;
 
 @end
 
 @implementation FlickrStreamCaptureViewController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
+@synthesize processor;
+
+- (id) initWithCaptureProcessor:(FlickrStreamCaptureProcessor *)captureProcessor {
+    if (!(self = [super init])) {
+        return nil;
     }
+    
+    self.processor = captureProcessor;
+    
     return self;
 }
 
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-	// Do any additional setup after loading the view.
+- (void)loadView {
+    self.view = [[[UIView alloc] initWithFrame: self.processor.parentViewController.view.frame] autorelease];
+    
+    AVCaptureVideoPreviewLayer* previewLayer = self.processor.previewLayer;
+    previewLayer.frame = self.view.bounds;
+    previewLayer.videoGravity = AVLayerVideoGravityResizeAspectFill;
+    
+    if ([previewLayer isOrientationSupported]) {
+        [previewLayer setOrientation:AVCaptureVideoOrientationPortrait];
+    }
+    
+    [self.view.layer insertSublayer:previewLayer below:[[self.view.layer sublayers] objectAtIndex:0]];
 }
 
-- (void)viewDidUnload
-{
-    [super viewDidUnload];
-    // Release any retained subviews of the main view.
+- (void) dealloc {
+    [processor release];
+    [super dealloc];
 }
 
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
-{
-    return (interfaceOrientation == UIInterfaceOrientationPortrait);
+#pragma mark -
+#pragma mark Private Methods
+
+- (void) showOverlay {
+    [self.parentViewController presentModalViewController:self animated:NO];
 }
 
 @end

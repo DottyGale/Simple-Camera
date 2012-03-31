@@ -43,6 +43,8 @@
 		BDC5FE6C152749660058A299 /* NSString+NSStringAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = BDC5FE6B152749660058A299 /* NSString+NSStringAdditions.m */; };
 		BDC5FE7715277E900058A299 /* FlickrAVCaptureStream.m in Sources */ = {isa = PBXBuildFile; fileRef = BDC5FE7415277E900058A299 /* FlickrAVCaptureStream.m */; };
 		BDC5FE7815277E900058A299 /* FlickrStreamCaptureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BDC5FE7615277E900058A299 /* FlickrStreamCaptureViewController.m */; };
+		BDC5FE7F15278C730058A299 /* FlickrStreamCaptureProcessor.m in Sources */ = {isa = PBXBuildFile; fileRef = BDC5FE7E15278C730058A299 /* FlickrStreamCaptureProcessor.m */; };
+		BDC5FE811527938E0058A299 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BDC5FE801527938E0058A299 /* CoreVideo.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -91,6 +93,9 @@
 		BDC5FE7415277E900058A299 /* FlickrAVCaptureStream.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FlickrAVCaptureStream.m; path = Plugins/FlickrAVCaptureStream.m; sourceTree = "<group>"; };
 		BDC5FE7515277E900058A299 /* FlickrStreamCaptureViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FlickrStreamCaptureViewController.h; path = Plugins/FlickrStreamCaptureViewController.h; sourceTree = "<group>"; };
 		BDC5FE7615277E900058A299 /* FlickrStreamCaptureViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FlickrStreamCaptureViewController.m; path = Plugins/FlickrStreamCaptureViewController.m; sourceTree = "<group>"; };
+		BDC5FE7D15278C730058A299 /* FlickrStreamCaptureProcessor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FlickrStreamCaptureProcessor.h; path = Classes/FlickrStreamCaptureProcessor.h; sourceTree = "<group>"; };
+		BDC5FE7E15278C730058A299 /* FlickrStreamCaptureProcessor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FlickrStreamCaptureProcessor.m; path = Classes/FlickrStreamCaptureProcessor.m; sourceTree = "<group>"; };
+		BDC5FE801527938E0058A299 /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,6 +103,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BDC5FE811527938E0058A299 /* CoreVideo.framework in Frameworks */,
 				BD2A8496151FEC3400321E73 /* Foundation.framework in Frameworks */,
 				BD2A8498151FEC3400321E73 /* UIKit.framework in Frameworks */,
 				BD2A849A151FEC3400321E73 /* CoreGraphics.framework in Frameworks */,
@@ -146,6 +152,7 @@
 		BD2A8494151FEC3400321E73 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				BDC5FE801527938E0058A299 /* CoreVideo.framework */,
 				BD2A8495151FEC3400321E73 /* Foundation.framework */,
 				BD2A8497151FEC3400321E73 /* UIKit.framework */,
 				BD2A8499151FEC3400321E73 /* CoreGraphics.framework */,
@@ -273,6 +280,8 @@
 			children = (
 				BDC5FE7315277E900058A299 /* FlickrAVCaptureStream.h */,
 				BDC5FE7415277E900058A299 /* FlickrAVCaptureStream.m */,
+				BDC5FE7D15278C730058A299 /* FlickrStreamCaptureProcessor.h */,
+				BDC5FE7E15278C730058A299 /* FlickrStreamCaptureProcessor.m */,
 				BDC5FE7515277E900058A299 /* FlickrStreamCaptureViewController.h */,
 				BDC5FE7615277E900058A299 /* FlickrStreamCaptureViewController.m */,
 				BD2A84E5151FEC3400321E73 /* README */,
@@ -384,6 +393,7 @@
 				BDC5FE6C152749660058A299 /* NSString+NSStringAdditions.m in Sources */,
 				BDC5FE7715277E900058A299 /* FlickrAVCaptureStream.m in Sources */,
 				BDC5FE7815277E900058A299 /* FlickrStreamCaptureViewController.m in Sources */,
+				BDC5FE7F15278C730058A299 /* FlickrStreamCaptureProcessor.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

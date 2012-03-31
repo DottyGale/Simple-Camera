@@ -14,8 +14,11 @@
 #import "CDVPlugin.h"
 #endif
 
+@class FlickrStreamCaptureProcessor;
+
 @interface FlickrAVCaptureStream : CDVPlugin {
     NSString *callback;
+    FlickrStreamCaptureProcessor *processor;
 }
 
 - (void) capture:(NSMutableArray *)arguments withDict:(NSMutableDictionary *)options;

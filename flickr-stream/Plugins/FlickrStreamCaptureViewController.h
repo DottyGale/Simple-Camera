@@ -8,6 +8,14 @@
 
 #import <UIKit/UIKit.h>
 
-@interface FlickrStreamCaptureViewController : UIViewController
+@class FlickrStreamCaptureProcessor;
+
+@interface FlickrStreamCaptureViewController : UIViewController {
+    FlickrStreamCaptureProcessor *processor;
+}
+
+@property (nonatomic, retain) FlickrStreamCaptureProcessor *processor;
+
+- (id) initWithCaptureProcessor:(FlickrStreamCaptureProcessor *)processor;
 
 @end
