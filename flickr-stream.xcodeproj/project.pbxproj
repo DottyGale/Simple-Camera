@@ -43,8 +43,8 @@
 		BDC5FE6C152749660058A299 /* NSString+NSStringAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = BDC5FE6B152749660058A299 /* NSString+NSStringAdditions.m */; };
 		BDC5FE7715277E900058A299 /* FlickrAVCaptureStream.m in Sources */ = {isa = PBXBuildFile; fileRef = BDC5FE7415277E900058A299 /* FlickrAVCaptureStream.m */; };
 		BDC5FE7815277E900058A299 /* FlickrStreamCaptureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BDC5FE7615277E900058A299 /* FlickrStreamCaptureViewController.m */; };
-		BDC5FE7F15278C730058A299 /* FlickrStreamCaptureProcessor.m in Sources */ = {isa = PBXBuildFile; fileRef = BDC5FE7E15278C730058A299 /* FlickrStreamCaptureProcessor.m */; };
 		BDC5FE811527938E0058A299 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BDC5FE801527938E0058A299 /* CoreVideo.framework */; };
+		BDC5FE8D1527ADC20058A299 /* FlickrStreamCaptureProcessor.m in Sources */ = {isa = PBXBuildFile; fileRef = BDC5FE8C1527ADC20058A299 /* FlickrStreamCaptureProcessor.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -93,9 +93,9 @@
 		BDC5FE7415277E900058A299 /* FlickrAVCaptureStream.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FlickrAVCaptureStream.m; path = Plugins/FlickrAVCaptureStream.m; sourceTree = "<group>"; };
 		BDC5FE7515277E900058A299 /* FlickrStreamCaptureViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FlickrStreamCaptureViewController.h; path = Plugins/FlickrStreamCaptureViewController.h; sourceTree = "<group>"; };
 		BDC5FE7615277E900058A299 /* FlickrStreamCaptureViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FlickrStreamCaptureViewController.m; path = Plugins/FlickrStreamCaptureViewController.m; sourceTree = "<group>"; };
-		BDC5FE7D15278C730058A299 /* FlickrStreamCaptureProcessor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FlickrStreamCaptureProcessor.h; path = Classes/FlickrStreamCaptureProcessor.h; sourceTree = "<group>"; };
-		BDC5FE7E15278C730058A299 /* FlickrStreamCaptureProcessor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FlickrStreamCaptureProcessor.m; path = Classes/FlickrStreamCaptureProcessor.m; sourceTree = "<group>"; };
 		BDC5FE801527938E0058A299 /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
+		BDC5FE8B1527ADC20058A299 /* FlickrStreamCaptureProcessor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FlickrStreamCaptureProcessor.h; path = Plugins/FlickrStreamCaptureProcessor.h; sourceTree = "<group>"; };
+		BDC5FE8C1527ADC20058A299 /* FlickrStreamCaptureProcessor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FlickrStreamCaptureProcessor.m; path = Plugins/FlickrStreamCaptureProcessor.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -278,10 +278,10 @@
 		BD2A84E4151FEC3400321E73 /* Plugins */ = {
 			isa = PBXGroup;
 			children = (
+				BDC5FE8B1527ADC20058A299 /* FlickrStreamCaptureProcessor.h */,
+				BDC5FE8C1527ADC20058A299 /* FlickrStreamCaptureProcessor.m */,
 				BDC5FE7315277E900058A299 /* FlickrAVCaptureStream.h */,
 				BDC5FE7415277E900058A299 /* FlickrAVCaptureStream.m */,
-				BDC5FE7D15278C730058A299 /* FlickrStreamCaptureProcessor.h */,
-				BDC5FE7E15278C730058A299 /* FlickrStreamCaptureProcessor.m */,
 				BDC5FE7515277E900058A299 /* FlickrStreamCaptureViewController.h */,
 				BDC5FE7615277E900058A299 /* FlickrStreamCaptureViewController.m */,
 				BD2A84E5151FEC3400321E73 /* README */,
@@ -393,7 +393,7 @@
 				BDC5FE6C152749660058A299 /* NSString+NSStringAdditions.m in Sources */,
 				BDC5FE7715277E900058A299 /* FlickrAVCaptureStream.m in Sources */,
 				BDC5FE7815277E900058A299 /* FlickrStreamCaptureViewController.m in Sources */,
-				BDC5FE7F15278C730058A299 /* FlickrStreamCaptureProcessor.m in Sources */,
+				BDC5FE8D1527ADC20058A299 /* FlickrStreamCaptureProcessor.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

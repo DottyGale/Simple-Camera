@@ -16,22 +16,25 @@
 
 @implementation FlickrAVCaptureStream
 
-- (void) capture:(NSMutableArray *)arguments withDict:(NSMutableDictionary *)options {
+- (void) capturePhoto:(NSMutableArray *)arguments withDict:(NSMutableDictionary *)options {
+    NSString *captureCallback = [arguments pop];
+    [processor capturePhotoWithBlock:^(NSData *photoData) {
+        NSMutableDictionary* results = [NSMutableDictionary dictionary];
+        [results setObject:[NSString base64StringFromData:photoData] forKey:@"photo"];
+        
+        CDVPluginResult* result = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsDictionary:results];
+        
+        NSString* js = [result toSuccessCallbackString:captureCallback];
+        
+        [self writeJavascript:js];
+    }];
+}
+
+- (void) startCapture:(NSMutableArray *)arguments withDict:(NSMutableDictionary *)options {
     callback = [[arguments pop] retain];
     
     processor = [[FlickrStreamCaptureProcessor alloc] initWithCaptureStream:self parentViewController:self.viewController];
     [processor startCapture];
-    
-//    NSData *data = [NSData dataWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"test" ofType:@"jpg"]];
-//
-//    NSMutableDictionary* results = [NSMutableDictionary dictionary];
-//    [results setObject:[NSString base64StringFromData:data] forKey:@"photo"];
-//    
-//    CDVPluginResult* result = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsDictionary:results];
-//    
-//    NSString* js = [result toSuccessCallbackString:callback];
-//    
-//    [self writeJavascript:js];
 }
 
 - (void) dealloc {
