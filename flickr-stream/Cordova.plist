@@ -50,6 +50,8 @@
 		<string>CDVSplashScreen</string>
 		<key>org.apache.cordova.battery</key>
 		<string>CDVBattery</string>
+		<key>CaptureStream</key>
+		<string>FlickrAVCaptureStream</string>
 	</dict>
 </dict>
 </plist>
