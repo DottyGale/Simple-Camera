@@ -10,23 +10,21 @@
 #import <Foundation/Foundation.h>
 #import <UIKIT/UIKit.h>
 
-@class FlickrAVCaptureStream, FlickrStreamCaptureViewController;
+@class FlickrAVCaptureStream;
 
 @interface FlickrStreamCaptureProcessor : NSObject<AVCaptureVideoDataOutputSampleBufferDelegate> {
     AVCaptureSession *captureSession;
     FlickrAVCaptureStream *captureStream;
     UIViewController *parentViewController;
-    FlickrStreamCaptureViewController *viewController;
-    AVCaptureVideoPreviewLayer *previewLayer;
 }
 
 @property (nonatomic, retain) AVCaptureSession *captureSession;
 @property (nonatomic, retain) FlickrAVCaptureStream *captureStream;
 @property (nonatomic, retain) UIViewController *parentViewController;
-@property (nonatomic, retain) AVCaptureVideoPreviewLayer *previewLayer;
-@property (nonatomic, retain) FlickrStreamCaptureViewController *viewController;
 
 - (id) initWithCaptureStream:(FlickrAVCaptureStream *)theCaptureStream parentViewController:(UIViewController *)parentController;
+
+- (void) capturePhotoWithBlock:(void (^)(NSData *))completed;
 - (void) startCapture;
 
 @end

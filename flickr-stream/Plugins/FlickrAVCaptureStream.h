@@ -21,6 +21,7 @@
     FlickrStreamCaptureProcessor *processor;
 }
 
-- (void) capture:(NSMutableArray *)arguments withDict:(NSMutableDictionary *)options;
+- (void) capturePhoto:(NSMutableArray *)arguments withDict:(NSMutableDictionary *)options;
+- (void) startCapture:(NSMutableArray *)arguments withDict:(NSMutableDictionary *)options;
 
 @end

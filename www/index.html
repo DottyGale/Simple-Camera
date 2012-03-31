@@ -51,9 +51,13 @@
 	function onDeviceReady() {
         	console.log("App is running..., capture stream is: " + CaptureStream.capture);
 
-        	CaptureStream.capture(function(result) {
-			console.log("Result is: " + result.photo.length);
+        	CaptureStream.startCapture(function(result) {
+               console.log("Nothing should be calling this!");
         	});
+        
+        CaptureStream.capturePhoto(function(result) {
+              console.log("Result is " + result.photo.length);
+       });
 
 	}
     
