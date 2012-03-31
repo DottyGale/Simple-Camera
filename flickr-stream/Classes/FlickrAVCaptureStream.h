@@ -18,10 +18,6 @@
     NSString *callback;
 }
 
-/*
- navigator.captureStream.capture
- */
-
 - (void) capture:(NSMutableArray *)arguments withDict:(NSMutableDictionary *)options;
 
 @end
