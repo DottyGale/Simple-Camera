@@ -22,6 +22,7 @@
 }
 
 - (void) capturePhoto:(NSMutableArray *)arguments withDict:(NSMutableDictionary *)options;
+- (void) endCapture:(NSMutableArray *)arguments withDict:(NSMutableDictionary *)options;
 - (void) startCapture:(NSMutableArray *)arguments withDict:(NSMutableDictionary *)options;
 
 @end

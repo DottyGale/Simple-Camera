@@ -30,6 +30,10 @@
     }];
 }
 
+- (void) endCapture:(NSMutableArray *)arguments withDict:(NSMutableDictionary *)options {
+    [processor endCapture];
+}
+
 - (void) startCapture:(NSMutableArray *)arguments withDict:(NSMutableDictionary *)options {
     callback = [[arguments pop] retain];
     
