@@ -39,6 +39,8 @@
 	function onBodyLoad()
 	{		
 		document.addEventListener("deviceready", onDeviceReady, false);
+
+		SCA.init();
 		
 	}
 	
@@ -62,6 +64,7 @@
 		<header>
 		</header>
 		<div class="content">
+			<section class="camera" data-key="camera" style="background-color:#efefef;">camera</section>
 		</div>  
 		<footer>  
 			<p>I am a footer</p>
