@@ -8,7 +8,6 @@
 
 #import "FlickrStreamCaptureProcessor.h"
 #import "FlickrAVCaptureStream.h"
-#import "FlickrStreamCaptureViewController.h"
 
 #import <CoreVideo/CoreVideo.h>
 

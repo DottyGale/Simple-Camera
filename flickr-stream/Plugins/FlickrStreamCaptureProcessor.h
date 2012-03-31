@@ -10,7 +10,7 @@
 #import <Foundation/Foundation.h>
 #import <UIKIT/UIKit.h>
 
-@class FlickrAVCaptureStream, FlickrStreamCaptureViewController;
+@class FlickrAVCaptureStream;
 
 @interface FlickrStreamCaptureProcessor : NSObject<AVCaptureVideoDataOutputSampleBufferDelegate> {
     AVCaptureSession *captureSession;
