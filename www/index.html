@@ -42,6 +42,8 @@
 
 		SCA.init();
 		
+		SCA.showScreen('camera');
+		
 	}
 	
 	/* When this function is called, Cordova has been initialized and is ready to roll */
@@ -74,6 +76,7 @@
 		</div>  
 		<footer>  
 			<p>
+				<button onClick="SCA.showScreen('uploader');">Upload</button>
 				<button>[Capture]</button>
 			</p>
 		</footer>

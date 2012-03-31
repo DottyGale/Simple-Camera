@@ -24,20 +24,34 @@
 			
 			return map;
 			
-		}   
+		}
+		
+		function hide(element) {
+			element.style.opacity = 0;
+		}
+		
+		function show(element) {
+			element.style.opacity = 1;
+		}
 		
 		out = {
+			
+			_current_screen : null,
 			
 			_screens : null,
 			
 			init : function() {
 				
-				this._screens = getDOMScreens();
+				this._screens = getDomScreens();
 				
 			},
 			
 			getAllScreens : function() {
 				return this._screens;
+			},
+			
+			getScreen : function(key) {
+				return this._screens[key];
 			},
 			
 			removeScreen : function(key) {
@@ -58,6 +72,23 @@
 			
 			appendScreen : function(key, element) {
 				this._screens[key] === element;
+			},
+			
+			hideAllScreens : function() {
+				
+				var element = null;
+				
+				for(var i=0 in this._screens) {
+					if(this._screens.hasOwnProperty(i)) {
+						hide(this._screens[i]);
+					}
+				}
+				
+			},
+			
+			showScreen : function(key) {
+				this.hideAllScreens();
+				show(this._screens[key]);
 			}
 			
 		}
