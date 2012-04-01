@@ -22,10 +22,12 @@
 @property (nonatomic, retain) AVCaptureSession *captureSession;
 @property (nonatomic, retain) FlickrAVCaptureStream *captureStream;
 @property (nonatomic, retain) UIViewController *parentViewController;
+@property (nonatomic, assign) CGSize thumbnailDimensions;
+@property (nonatomic, assign) CGFloat toolbarHeight;
 
 - (id) initWithCaptureStream:(FlickrAVCaptureStream *)theCaptureStream parentViewController:(UIViewController *)parentController;
 
-- (void) capturePhotoWithBlock:(void (^)(NSData *))completed;
+- (void) capturePhotoWithBlock:(void (^)(NSDictionary *))completed;
 - (void) endCapture;
 - (void) startCapture;
 

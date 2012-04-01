@@ -44,6 +44,9 @@
 		BDC5FE7715277E900058A299 /* FlickrAVCaptureStream.m in Sources */ = {isa = PBXBuildFile; fileRef = BDC5FE7415277E900058A299 /* FlickrAVCaptureStream.m */; };
 		BDC5FE811527938E0058A299 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BDC5FE801527938E0058A299 /* CoreVideo.framework */; };
 		BDC5FE8D1527ADC20058A299 /* FlickrStreamCaptureProcessor.m in Sources */ = {isa = PBXBuildFile; fileRef = BDC5FE8C1527ADC20058A299 /* FlickrStreamCaptureProcessor.m */; };
+		BDC5FE931527DFEE0058A299 /* UIImage+Resize.m in Sources */ = {isa = PBXBuildFile; fileRef = BDC5FE911527DFEE0058A299 /* UIImage+Resize.m */; };
+		BDC5FE981527E02E0058A299 /* UIImage+Alpha.m in Sources */ = {isa = PBXBuildFile; fileRef = BDC5FE941527E02E0058A299 /* UIImage+Alpha.m */; };
+		BDC5FE991527E02E0058A299 /* UIImage+RoundedCorner.m in Sources */ = {isa = PBXBuildFile; fileRef = BDC5FE961527E02E0058A299 /* UIImage+RoundedCorner.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -93,6 +96,12 @@
 		BDC5FE801527938E0058A299 /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
 		BDC5FE8B1527ADC20058A299 /* FlickrStreamCaptureProcessor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FlickrStreamCaptureProcessor.h; path = Plugins/FlickrStreamCaptureProcessor.h; sourceTree = "<group>"; };
 		BDC5FE8C1527ADC20058A299 /* FlickrStreamCaptureProcessor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FlickrStreamCaptureProcessor.m; path = Plugins/FlickrStreamCaptureProcessor.m; sourceTree = "<group>"; };
+		BDC5FE911527DFEE0058A299 /* UIImage+Resize.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Resize.m"; sourceTree = "<group>"; };
+		BDC5FE921527DFEE0058A299 /* UIImage+Resize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Resize.h"; sourceTree = "<group>"; };
+		BDC5FE941527E02E0058A299 /* UIImage+Alpha.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Alpha.m"; sourceTree = "<group>"; };
+		BDC5FE951527E02E0058A299 /* UIImage+Alpha.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Alpha.h"; sourceTree = "<group>"; };
+		BDC5FE961527E02E0058A299 /* UIImage+RoundedCorner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+RoundedCorner.m"; sourceTree = "<group>"; };
+		BDC5FE971527E02E0058A299 /* UIImage+RoundedCorner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+RoundedCorner.h"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -268,6 +277,12 @@
 				BD2A84E0151FEC3400321E73 /* MainViewController.m */,
 				BDC5FE6A152749660058A299 /* NSString+NSStringAdditions.h */,
 				BDC5FE6B152749660058A299 /* NSString+NSStringAdditions.m */,
+				BDC5FE951527E02E0058A299 /* UIImage+Alpha.h */,
+				BDC5FE941527E02E0058A299 /* UIImage+Alpha.m */,
+				BDC5FE921527DFEE0058A299 /* UIImage+Resize.h */,
+				BDC5FE911527DFEE0058A299 /* UIImage+Resize.m */,
+				BDC5FE971527E02E0058A299 /* UIImage+RoundedCorner.h */,
+				BDC5FE961527E02E0058A299 /* UIImage+RoundedCorner.m */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -388,6 +403,9 @@
 				BDC5FE6C152749660058A299 /* NSString+NSStringAdditions.m in Sources */,
 				BDC5FE7715277E900058A299 /* FlickrAVCaptureStream.m in Sources */,
 				BDC5FE8D1527ADC20058A299 /* FlickrStreamCaptureProcessor.m in Sources */,
+				BDC5FE931527DFEE0058A299 /* UIImage+Resize.m in Sources */,
+				BDC5FE981527E02E0058A299 /* UIImage+Alpha.m in Sources */,
+				BDC5FE991527E02E0058A299 /* UIImage+RoundedCorner.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -52,12 +52,20 @@
 	for more details -jm */
 	function onDeviceReady() {
     console.log("App is running..., capture stream is: " + CaptureStream.capture);
-    CaptureStream.startCapture();
+    var noop = function() {};
+    CaptureStream.startCapture(noop, noop, {
+      "toolbarHeight" : 44,
+      "thumbnailDimensions" : {
+        "height" : 32,
+        "width" : 32
+      }
+    });
 
     function captureHandler() {
       console.log("Handling capture...");
       CaptureStream.capturePhoto(function(result) {
         console.log("Photo size: " + result.photo.length);
+        console.log("Thumbnail size: " + result.thumbnail.length);
 
         var image = document.createElement("img");
         image.src = "data:image/jpeg;base64," + result.photo;

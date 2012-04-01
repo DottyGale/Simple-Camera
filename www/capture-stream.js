@@ -1,6 +1,6 @@
 var CaptureStream = {    
-    "startCapture" : function(success, fail) {
-        return Cordova.exec(success, fail, "CaptureStream", "startCapture", []);
+    "startCapture" : function(success, failure, options) {
+        return Cordova.exec(success, failure, "CaptureStream", "startCapture", [ options ]);
     },
     
     "capturePhoto" : function(success, fail) {

@@ -9,18 +9,25 @@
 #import "FlickrStreamCaptureProcessor.h"
 #import "FlickrAVCaptureStream.h"
 
+#import "UIImage+Resize.h"
+
 #import <CoreVideo/CoreVideo.h>
+
+CGFloat const kFlickrStreamDefaultThumbnailWidth = 32.0f;
+CGFloat const kFlickrStreamDefaultThumbnailHeight = 32.0f;
+CGFloat const kFlickrStreamDefaultToolbarHeight = 40.0f;
+NSUInteger const kFlickrStreamPreviewLayerViewTag = 101;
 
 @interface FlickrStreamCaptureProcessor ()
 
 - (AVCaptureVideoPreviewLayer *) configureCaptureSession;
-- (void) captureCompletedWithData:(NSData *)data;
+- (void) captureCompletedWithImage:(UIImage *)image;
 
 @end
 
 @implementation FlickrStreamCaptureProcessor
 
-@synthesize captureSession, captureStream, parentViewController;
+@synthesize captureSession, captureStream, parentViewController, thumbnailDimensions, toolbarHeight;
 
 - (id) initWithCaptureStream:(FlickrAVCaptureStream *)theCaptureStream parentViewController:(UIViewController *)parentController {
     if (!(self = [super init])) {
@@ -29,11 +36,13 @@
     
     self.captureStream = theCaptureStream;
     self.parentViewController = parentController;
+    self.toolbarHeight = kFlickrStreamDefaultToolbarHeight;
+    self.thumbnailDimensions = CGSizeMake(kFlickrStreamDefaultThumbnailWidth, kFlickrStreamDefaultThumbnailHeight);
 
     return self;
 }
 
-- (void) capturePhotoWithBlock:(void (^)(NSData *))completed {
+- (void) capturePhotoWithBlock:(void (^)(NSDictionary *))completed {
     if (!pendingCaptures) {
         pendingCaptures = [[NSMutableArray alloc] init];
     }
@@ -42,18 +51,18 @@
 }
 
 - (void) endCapture {
-    [[self.parentViewController.view viewWithTag:834] removeFromSuperview];
+    [[self.parentViewController.view viewWithTag:kFlickrStreamPreviewLayerViewTag] removeFromSuperview];
 }
 
 - (void) startCapture {
     AVCaptureVideoPreviewLayer *previewLayer = [self configureCaptureSession];
-    
-    CGRect parentFrame = self.parentViewController.view.frame;
-    parentFrame.origin.y = 0.0f;
-    parentFrame.size.height -= 40.0f; // TODO: presumably toolbar size will vary on iPad
 
-    UIView *view = [[UIView alloc] initWithFrame:parentFrame];
-    view.tag = 834;
+    
+    CGRect parentBounds = self.parentViewController.view.bounds;
+    parentBounds.size.height -= self.toolbarHeight;
+
+    UIView *view = [[UIView alloc] initWithFrame:parentBounds];
+    view.tag = kFlickrStreamPreviewLayerViewTag;
 
     previewLayer.frame = view.bounds;
     previewLayer.videoGravity = AVLayerVideoGravityResizeAspectFill;
@@ -106,12 +115,8 @@
     /* We release some components */
     CGContextRelease(newContext); 
     CGColorSpaceRelease(colorSpace);
-    
-    
-    UIImage *image = [UIImage imageWithCGImage:newImage];
-    NSData *data = UIImageJPEGRepresentation(image, 1.0f);
 	
-    [self performSelectorOnMainThread:@selector(captureCompletedWithData:) withObject:data waitUntilDone:NO];
+    [self performSelectorOnMainThread:@selector(captureCompletedWithImage:) withObject:[UIImage imageWithCGImage:newImage] waitUntilDone:NO];
     
 	CGImageRelease(newImage);
 	
@@ -124,9 +129,18 @@
 #pragma mark -
 #pragma mark Private Methods
 
-- (void) captureCompletedWithData:(NSData *)data {
-    void (^completed)(NSData *) = [pendingCaptures pop];
-    completed((NSData *)data);
+- (void) captureCompletedWithImage:(UIImage *)image {
+    void (^completed)(NSDictionary *) = [pendingCaptures pop];
+    
+    NSData *fullSizeData = UIImageJPEGRepresentation(image, 1.0f);
+    
+    UIImage *thumbnail = [image thumbnailImage:thumbnailDimensions.width transparentBorder:0 cornerRadius:3 interpolationQuality:kCGInterpolationDefault];
+    
+    NSData *thumbnailData = UIImageJPEGRepresentation(thumbnail, 1.0f); 
+    
+    NSDictionary *results = [NSDictionary dictionaryWithObjectsAndKeys:fullSizeData, @"photo", thumbnailData, @"thumbnail", nil];
+    
+    completed(results);
 }
 
 - (AVCaptureVideoPreviewLayer *) configureCaptureSession {

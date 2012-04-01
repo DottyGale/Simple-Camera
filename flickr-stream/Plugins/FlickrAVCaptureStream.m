@@ -18,9 +18,10 @@
 
 - (void) capturePhoto:(NSMutableArray *)arguments withDict:(NSMutableDictionary *)options {
     NSString *captureCallback = [arguments pop];
-    [processor capturePhotoWithBlock:^(NSData *photoData) {
+    [processor capturePhotoWithBlock:^(NSDictionary *photoData) {        
         NSMutableDictionary* results = [NSMutableDictionary dictionary];
-        [results setObject:[NSString base64StringFromData:photoData] forKey:@"photo"];
+        [results setObject:[NSString base64StringFromData:[photoData objectForKey:@"photo"]] forKey:@"photo"];
+        [results setObject:[NSString base64StringFromData:[photoData objectForKey:@"thumbnail"]] forKey:@"thumbnail"];
         
         CDVPluginResult* result = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsDictionary:results];
         
