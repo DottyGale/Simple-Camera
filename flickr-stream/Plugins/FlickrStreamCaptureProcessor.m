@@ -110,13 +110,14 @@ NSUInteger const kFlickrStreamPreviewLayerViewTag = 101;
     /* Create a CGImageRef from the CVImageBufferRef */
     CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB(); 
     CGContextRef newContext = CGBitmapContextCreate(baseAddress, width, height, 8, bytesPerRow, colorSpace, kCGBitmapByteOrder32Little | kCGImageAlphaPremultipliedFirst);
+    
     CGImageRef newImage = CGBitmapContextCreateImage(newContext); 
 	
     /* We release some components */
     CGContextRelease(newContext); 
     CGColorSpaceRelease(colorSpace);
-	
-    [self performSelectorOnMainThread:@selector(captureCompletedWithImage:) withObject:[UIImage imageWithCGImage:newImage] waitUntilDone:NO];
+    
+    [self performSelectorOnMainThread:@selector(captureCompletedWithImage:) withObject:[UIImage imageWithCGImage:newImage scale:1.0f orientation:UIImageOrientationRight] waitUntilDone:NO];
     
 	CGImageRelease(newImage);
 	

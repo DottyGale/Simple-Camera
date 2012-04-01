@@ -85,7 +85,6 @@
 		BD2A84DF151FEC3400321E73 /* MainViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MainViewController.h; path = Classes/MainViewController.h; sourceTree = "<group>"; };
 		BD2A84E0151FEC3400321E73 /* MainViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = MainViewController.m; path = Classes/MainViewController.m; sourceTree = "<group>"; };
 		BD2A84E2151FEC3400321E73 /* MainViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = MainViewController.xib; path = Classes/MainViewController.xib; sourceTree = "<group>"; };
-		BD2A84E5151FEC3400321E73 /* README */ = {isa = PBXFileReference; lastKnownFileType = text; name = README; path = Plugins/README; sourceTree = "<group>"; };
 		BD2A84E6151FEC3400321E73 /* verify.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = verify.sh; sourceTree = "<group>"; };
 		BD2A84ED151FECBD00321E73 /* www */ = {isa = PBXFileReference; lastKnownFileType = folder; path = www; sourceTree = "<group>"; };
 		BDC5FE6315265D440058A299 /* test.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = test.jpg; sourceTree = "<group>"; };
@@ -294,7 +293,6 @@
 				BDC5FE7415277E900058A299 /* FlickrAVCaptureStream.m */,
 				BDC5FE8B1527ADC20058A299 /* FlickrStreamCaptureProcessor.h */,
 				BDC5FE8C1527ADC20058A299 /* FlickrStreamCaptureProcessor.m */,
-				BD2A84E5151FEC3400321E73 /* README */,
 			);
 			name = Plugins;
 			sourceTree = "<group>";
