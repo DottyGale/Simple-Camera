@@ -40,13 +40,25 @@ footer {
 	text-align:center;
 }
 
-#capture {
+footer div.section-footer {
+
+}
+
+#camera-footer {
+	display: none;
+}
+
+#uploader-footer {
+	display: none;
+}
+
+footer div.section-footer .button-main {
 	width: 100px;
 	height: 39px;
 	margin-top: 6px;
 }
 
-#preview {
+footer div.section-footer .button-left {
 	background: #333;
 	position: absolute;
 	left: 10px;

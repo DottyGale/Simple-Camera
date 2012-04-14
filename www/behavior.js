@@ -26,12 +26,21 @@
 			
 		}
 		
+		function toggleFooter(element, visible) {
+			var footer = document.getElementById(element.getAttribute("data-key") + "-footer");
+			if (footer) {
+			    footer.style.display = (visible ? "block" : "none");
+			}
+		}
+
 		function hide(element) {
 			element.style.opacity = 0;
+			toggleFooter(element, false);
 		}
 		
 		function show(element) {
 			element.style.opacity = 1;
+			toggleFooter(element, true);
 		}
 		
 		out = {

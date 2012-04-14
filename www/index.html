@@ -44,6 +44,8 @@
 		SCA.init();
 		
 		SCA.showScreen('camera');
+
+		document.getElementById("preview").addEventListener("click", showUpload, false);
 	}
 	
 	/* When this function is called, Cordova has been initialized and is ready to roll */
@@ -54,38 +56,37 @@
 	var pendingUpload = [];
 	
 	function onDeviceReady() {
-    console.log("App is running..., capture stream is: " + CaptureStream.capture);
-    var noop = function() {};
-    CaptureStream.startCapture(noop, noop, {
-      "toolbarHeight" : 50,
-      "thumbnailDimensions" : {
-        "height" : 37,
-        "width" : 37
-      }
-    });
+		console.log("App is running..., capture stream is: " + CaptureStream.capture);
+		var noop = function() {};
+		CaptureStream.startCapture(noop, noop, {
+			"toolbarHeight" : 50,
+			"thumbnailDimensions" : {
+				"height" : 37,
+				"width" : 37
+			}
+		});
 
-    function captureHandler() {
-      console.log("Handling capture...");
-      CaptureStream.capturePhoto(function(result) {
-        pendingUpload.push(result);
-        document.getElementById("preview").style.backgroundImage = "url(data:image/jpeg;base64," + result.thumbnail + ")";
-        document.querySelector("#preview .badge").innerText = pendingUpload.length;
-      });
-    }
+		function captureHandler() {
+			console.log("Handling capture...");
+			CaptureStream.capturePhoto(function(result) {
+				pendingUpload.push(result);
+				document.getElementById("preview").style.backgroundImage = "url(data:image/jpeg;base64," + result.thumbnail + ")";
+				document.querySelector("#preview .badge").innerText = pendingUpload.length;
+			});
+		}
 
-    function showUpload() {
-      console.log("Preview box clicked...");
-      CaptureStream.endCapture();
-      SCA.showScreen('uploader');
-    }
-
-    document.getElementById("capture").addEventListener("click", captureHandler, false);
-    document.getElementById("preview").addEventListener("click", showUpload, false);
+		document.getElementById("capture").addEventListener("click", captureHandler, false);
 	}
-    
-    </script>
-  </head>
-  <body onload="onBodyLoad()">
+
+	function showUpload() {
+		console.log("Preview box clicked...");
+		CaptureStream.endCapture();
+		SCA.showScreen('uploader');
+	}
+
+	</script>
+	</head>
+	<body onload="onBodyLoad()">
 	<div class="simple-camera">
 		<header>
 		</header>
@@ -95,12 +96,20 @@
 			<section class="photostream" data-key="photostream" style="background-color:red;">photostream</section>
 		</div>  
 		<footer>  
-			<p>
-				<div id="preview" onClick="showUpload();">
-				  <span class="badge"></span>
-				</div>
-				<button id="capture">[Capture]</button>
-			</p>
+			<div id="camera-footer" class="section-footer">
+				<p>
+					<div id="preview" class="button-left">
+						<span class="badge"></span>
+					</div>
+					<button id="capture" class="button-main">[Capture]</button>
+				</p>
+			</div>
+			<div id="uploader-footer" class="section-footer">
+				<p>
+					<button id="camera" class="button-left">[Cam]</button>
+					<button id="upload" class="button-main">Upload</button>
+				</p>
+			</div>
 		</footer>
 	</div>
   </body>
