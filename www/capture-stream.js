@@ -9,5 +9,9 @@ var CaptureStream = {
     
     "endCapture" : function(success, fail) {
         return Cordova.exec(success, fail, "CaptureStream", "endCapture", []);
+    },
+    
+    "photosForUpload" : function(success, failure, options) {
+        return Cordova.exec(success, failure, "CaptureStream", "photosForUpload", [ options ]);
     }
 };

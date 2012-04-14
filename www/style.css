@@ -32,6 +32,11 @@ div.content section {
 	opacity :0;
 }
 
+.upload-thumbnail {
+	width: 77px;
+	height: 77px;
+}
+
 footer {
 	position:absolute;
 	height:50px;

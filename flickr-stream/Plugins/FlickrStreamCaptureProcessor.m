@@ -9,7 +9,7 @@
 #import "FlickrStreamCaptureProcessor.h"
 #import "FlickrAVCaptureStream.h"
 
-#import "UIImage+Resize.h"
+//#import "UIImage+Resize.h"
 
 #import <CoreVideo/CoreVideo.h>
 
@@ -42,7 +42,7 @@ NSUInteger const kFlickrStreamPreviewLayerViewTag = 101;
     return self;
 }
 
-- (void) capturePhotoWithBlock:(void (^)(NSDictionary *))completed {
+- (void) capturePhotoWithBlock:(void (^)(UIImage *))completed {
     if (!pendingCaptures) {
         pendingCaptures = [[NSMutableArray alloc] init];
     }
@@ -132,17 +132,9 @@ NSUInteger const kFlickrStreamPreviewLayerViewTag = 101;
 #pragma mark Private Methods
 
 - (void) captureCompletedWithImage:(UIImage *)image {
-    void (^completed)(NSDictionary *) = [pendingCaptures pop];
-    
-    NSData *fullSizeData = UIImageJPEGRepresentation(image, 1.0f);
-    
-    UIImage *thumbnail = [image thumbnailImage:thumbnailDimensions.width transparentBorder:0 cornerRadius:0 interpolationQuality:kCGInterpolationDefault];
-    
-    NSData *thumbnailData = UIImageJPEGRepresentation(thumbnail, 1.0f); 
-    
-    NSDictionary *results = [NSDictionary dictionaryWithObjectsAndKeys:fullSizeData, @"photo", thumbnailData, @"thumbnail", nil];
-    
-    completed(results);
+    void (^completed)(UIImage *) = [pendingCaptures pop];
+
+    completed(image);
 }
 
 - (AVCaptureVideoPreviewLayer *) configureCaptureSession {

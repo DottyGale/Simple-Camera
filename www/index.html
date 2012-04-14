@@ -60,9 +60,13 @@
 		var noop = function() {};
 		CaptureStream.startCapture(noop, noop, {
 			"toolbarHeight" : 50,
-			"thumbnailDimensions" : {
+			"previewThumbnailDimensions" : {
 				"height" : 37,
 				"width" : 37
+			},
+			"uploadThumbnailDimensions" : {
+				"height" : 77,
+				"width" : 77
 			}
 		});
 
@@ -70,7 +74,7 @@
 			console.log("Handling capture...");
 			CaptureStream.capturePhoto(function(result) {
 				pendingUpload.push(result);
-				document.getElementById("preview").style.backgroundImage = "url(data:image/jpeg;base64," + result.thumbnail + ")";
+				document.getElementById("preview").style.backgroundImage = "url(data:image/jpeg;base64," + result.preview + ")";
 				document.querySelector("#preview .badge").innerText = pendingUpload.length;
 			});
 		}
@@ -81,7 +85,20 @@
 	function showUpload() {
 		console.log("Preview box clicked...");
 		CaptureStream.endCapture();
-		SCA.showScreen('uploader');
+		CaptureStream.photosForUpload(function(result) {
+			var uploader = document.querySelector(".uploader");
+			for (var i = 0, l = result.length; i < l; i++) {
+				console.log("Adding thumbnail...");
+				var div = document.createElement("div");
+
+				div.classList.add("upload-thumbnail");
+				div.style.backgroundImage = "url(data:image/jpeg;base64," + result[i] + ")";
+
+				uploader.appendChild(div);
+			}
+			
+			SCA.showScreen('uploader');
+		});
 	}
 
 	</script>

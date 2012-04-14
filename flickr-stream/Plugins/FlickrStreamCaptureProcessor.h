@@ -27,7 +27,7 @@
 
 - (id) initWithCaptureStream:(FlickrAVCaptureStream *)theCaptureStream parentViewController:(UIViewController *)parentController;
 
-- (void) capturePhotoWithBlock:(void (^)(NSDictionary *))completed;
+- (void) capturePhotoWithBlock:(void (^)(UIImage *))completed;
 - (void) endCapture;
 - (void) startCapture;
 

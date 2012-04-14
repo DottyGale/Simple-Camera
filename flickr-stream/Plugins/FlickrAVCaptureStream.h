@@ -18,11 +18,15 @@
 
 @interface FlickrAVCaptureStream : CDVPlugin {
     NSString *callback;
+    NSMutableArray *pendingPhotos;
+    CGSize previewThumbnailSize;
     FlickrStreamCaptureProcessor *processor;
+    CGSize uploadThumbnailSize;
 }
 
 - (void) capturePhoto:(NSMutableArray *)arguments withDict:(NSMutableDictionary *)options;
 - (void) endCapture:(NSMutableArray *)arguments withDict:(NSMutableDictionary *)options;
+- (void) photosForUpload:(NSMutableArray *)arguments withDict:(NSMutableDictionary *)options;
 - (void) startCapture:(NSMutableArray *)arguments withDict:(NSMutableDictionary *)options;
 
 @end
