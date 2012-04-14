@@ -90,6 +90,7 @@ NSUInteger const kFlickrStreamPreviewLayerViewTag = 101;
 
 #pragma mark -
 #pragma mark AVCaptureSession delegate
+
 - (void) captureOutput:(AVCaptureOutput *)captureOutput didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer fromConnection:(AVCaptureConnection *)connection { 
 
     if (![pendingCaptures count]) { return; }
@@ -135,7 +136,7 @@ NSUInteger const kFlickrStreamPreviewLayerViewTag = 101;
     
     NSData *fullSizeData = UIImageJPEGRepresentation(image, 1.0f);
     
-    UIImage *thumbnail = [image thumbnailImage:thumbnailDimensions.width transparentBorder:0 cornerRadius:3 interpolationQuality:kCGInterpolationDefault];
+    UIImage *thumbnail = [image thumbnailImage:thumbnailDimensions.width transparentBorder:0 cornerRadius:0 interpolationQuality:kCGInterpolationDefault];
     
     NSData *thumbnailData = UIImageJPEGRepresentation(thumbnail, 1.0f); 
     

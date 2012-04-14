@@ -24,7 +24,7 @@ header h1 {
 
 div.content {
 	position:absolute;
-	top:0;right:0;bottom:40px;left:0;
+	top:0;right:0;bottom:50px;left:0;
 	background-color:#333;
 }
 
@@ -34,9 +34,39 @@ div.content section {
 
 footer {
 	position:absolute;
-	height:40px;
+	height:50px;
 	right:0;bottom:0;left:0;
 	background-color:#ddd;
-	padding:5px;
 	text-align:center;
+}
+
+#capture {
+	width: 100px;
+	height: 39px;
+	margin-top: 6px;
+}
+
+#preview {
+	background: #333;
+	position: absolute;
+	left: 10px;
+	top: 8px;
+	width: 37px;
+	height: 37px;
+	-webkit-border-radius: 5px;
+}
+
+span.badge {
+	display: block;
+	width: 20px;
+	height: 20px;
+	background: rgb(255, 0, 132);
+	border: 2px solid #fff;
+	-webkit-border-radius: 12px;
+	position: relative;
+	top: -4px;
+	left: 25px;
+	color: white;
+	text-align:center;
+	font-weight: bold;
 }

@@ -7,6 +7,7 @@
 	<meta charset="utf-8">
 
   <link rel="stylesheet" href="style.css" type="text/css">
+  <link rel="stylesheet" href="style-retina.css" type="text/css" media="only screen and (-webkit-min-device-pixel-ratio: 2)">
 	<!-- iPad/iPhone specific css below, add after your main css >
 	<link rel="stylesheet" media="only screen and (max-device-width: 1024px)" href="ipad.css" type="text/css" />		
 	<link rel="stylesheet" media="only screen and (max-device-width: 480px)" href="iphone.css" type="text/css" />		
@@ -43,40 +44,43 @@
 		SCA.init();
 		
 		SCA.showScreen('camera');
-		
 	}
 	
 	/* When this function is called, Cordova has been initialized and is ready to roll */
 	/* If you are supporting your own protocol, the var invokeString will contain any arguments to the app launch.
 	see http://iphonedevelopertips.com/cocoa/launching-your-own-application-via-a-custom-url-scheme.html
 	for more details -jm */
+	
+	var pendingUpload = [];
+	
 	function onDeviceReady() {
     console.log("App is running..., capture stream is: " + CaptureStream.capture);
     var noop = function() {};
     CaptureStream.startCapture(noop, noop, {
-      "toolbarHeight" : 44,
+      "toolbarHeight" : 50,
       "thumbnailDimensions" : {
-        "height" : 32,
-        "width" : 32
+        "height" : 37,
+        "width" : 37
       }
     });
 
     function captureHandler() {
       console.log("Handling capture...");
       CaptureStream.capturePhoto(function(result) {
-        console.log("Photo size: " + result.photo.length);
-        console.log("Thumbnail size: " + result.thumbnail.length);
-
-        var image = document.createElement("img");
-        image.src = "data:image/jpeg;base64," + result.photo;
-
-        document.querySelector(".content").appendChild(image);
-
-        CaptureStream.endCapture();
+        pendingUpload.push(result);
+        document.getElementById("preview").style.backgroundImage = "url(data:image/jpeg;base64," + result.thumbnail + ")";
+        document.querySelector("#preview .badge").innerText = pendingUpload.length;
       });
     }
 
+    function showUpload() {
+      console.log("Preview box clicked...");
+      CaptureStream.endCapture();
+      SCA.showScreen('uploader');
+    }
+
     document.getElementById("capture").addEventListener("click", captureHandler, false);
+    document.getElementById("preview").addEventListener("click", showUpload, false);
 	}
     
     </script>
@@ -92,7 +96,9 @@
 		</div>  
 		<footer>  
 			<p>
-				<button onClick="SCA.showScreen('uploader');">Upload</button>
+				<div id="preview" onClick="showUpload();">
+				  <span class="badge"></span>
+				</div>
 				<button id="capture">[Capture]</button>
 			</p>
 		</footer>

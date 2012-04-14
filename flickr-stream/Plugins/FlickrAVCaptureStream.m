@@ -1,5 +1,6 @@
 //
 //  FlickrAVCaptureStream.m
+
 //  flickr-stream
 //
 //  Created by Joshua Cohen on 3/25/12.
@@ -39,6 +40,12 @@
     callback = [[arguments pop] retain];
     
     processor = [[FlickrStreamCaptureProcessor alloc] initWithCaptureStream:self parentViewController:self.viewController];
+    processor.toolbarHeight = [[options objectForKey:@"toolbarHeight"] floatValue];
+    
+    NSDictionary *thumbDimensions = [options objectForKey:@"thumbnailDimensions"];
+    
+    processor.thumbnailDimensions = CGSizeMake([[thumbDimensions objectForKey:@"width"] floatValue], [[thumbDimensions objectForKey:@"height"] floatValue]);
+
     [processor startCapture];
 }
 
